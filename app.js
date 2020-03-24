@@ -95,19 +95,10 @@ function Human(species, weight, diet, image, feet, inches, name) {
   this.name = name;
 }
 
-// Human.prototype.log = function() {
-//   console.log(this);
-// };
-
 Human.prototype.getHeightInInches = function(feet, inches) {
   //coercing string values to numbers with (+)inches
   return +feet * 12 + +inches;
 };
-
-// Human.prototype.compareHumanToDino = function(comparisonKey, Dino) {};
-// return function(comparisonKey, dinoSpecies) {
-//   console.log(self, typeof comparisonKey, dinoSpecies);
-//
 
 // it takes an array of strings, which are key values we want to exclude.
 Human.prototype.getRandomKeysWithExclusion = function(arrayOfKeysToExclude) {
@@ -137,7 +128,6 @@ function Dinosaur(
   this.fact = fact;
   this.human = human; // reference to the human info object
   this.height = height;
-  // this.randomFact = this.compareHumanToDino("diet", this.species);
 }
 
 Dinosaur.prototype = Object.create(Human.prototype);
@@ -173,8 +163,7 @@ dinoCompare.addEventListener("submit", e => {
       inches: e.target.inches.value
     }
   };
-  // coerce the feet value from string to number
-  // const height = (+e.target.feet.value + e.target.inches.value / 18).toFixed(2);
+
   const human = new Human(
     "Homo Sapiens",
     humanComparisonInfo.weight,
@@ -233,7 +222,6 @@ const createComparisonDiv = (Dinosaurs, human) => {
           "inches", // instead we compare height in total inches
           "feet"
         ]);
-        console.log(human[humanRandomKey], typeof humanRandomKey);
         return `
         <div class="grid-item">
         <h2>${dino.name}</h2>
@@ -278,7 +266,7 @@ const shuffleArray = array => {
     j = getRandomInt(i);
     swapArrayElements(array, j, i);
   }
-  // I thought making this function more generic means I can use it for any randomization
+  // I thought making this function more generic means I can use it for any randomization. So I instead add the human after I shuffle the array not during the shuffle function
   // array.splice(4, 0, staticSelect);
   return array;
 };
